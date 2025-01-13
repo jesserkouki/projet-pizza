@@ -1,8 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import LogInHeader, { LogInForm } from './LogIn';
-import SignUpHeader, { SignUpForm } from './SignUp';
-import OptionHeader from './Option';
+import { LogInForm } from './LogIn';
+import  { SignUpForm } from './SignUp';
+import OptionHeader, { OptionBody } from './Option';
+import { PizzaBody, PizzaFooter, PizzaHeader } from './CraftPizza';
+import { PastBody, PastHeader } from './PastOrder';
+import { PriceBody, PriceFooter, PriceHeader } from './Price';
+import  { SurpriseFooter, SurpriseHeader } from './Surprise';
+import SurpriseBody from './Surprise';
+import { Footer } from './Option';
 
 export default function App(){
   return (
@@ -12,7 +18,7 @@ export default function App(){
           path="/login"
           element={
             <>
-              <LogInHeader />
+              
               <LogInForm />
             </>
           }
@@ -21,7 +27,7 @@ export default function App(){
           path="/signup"
           element={
             <>
-              <SignUpHeader />
+              
               <SignUpForm />
             </>
           }
@@ -30,12 +36,50 @@ export default function App(){
           path="/"
           element={
             <>
-              <LogInHeader />
               <LogInForm />
             </>
           }
         />
-        <Route path="/option" element={<OptionHeader/>}/>
+        <Route path="/option" 
+        element={
+        <>
+        <OptionHeader/>
+        <OptionBody/> 
+        <Footer />
+        </>
+        }/>
+         <Route path="/craft" 
+        element={
+        <>
+        <PizzaHeader/>
+        <PizzaBody/>
+        <PizzaFooter />
+        </>
+        }/>
+         <Route path="/past" 
+        element={
+        <>
+        <PastHeader/>
+        <PastBody />
+        <Footer/>
+        </>
+        }/>
+         <Route path="/price" 
+        element={
+        <>
+        <PriceHeader/>
+        <PriceBody/>
+        <PriceFooter/>
+        </>
+        }/>
+         <Route path="/surprise" 
+        element={
+        <>
+          <SurpriseHeader />
+          <SurpriseBody />
+          <SurpriseFooter />
+        </>
+        }/>
       </Routes>
     </Router>
   );

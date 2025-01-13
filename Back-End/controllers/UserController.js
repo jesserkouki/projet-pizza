@@ -41,13 +41,13 @@ const loginUser = async (req, res) => {
   const { email , password } = req. body;
     try {
         const user = await User. findOne({ email });
-        if (!user) return res.status (404).json({ message: 'Utilisateur non trouvé' }) ;
+        if (!user) return res.status (404).json({ success: false, message: 'Utilisateur non trouvé' }) ;
         const isMatch = await user.matchPassword (password) ;
 
-        if (!isMatch) return res.status (400).json({ message: 'Mot de passe incorrect' });
+        if (!isMatch) return res.status (400).json({ success: false, message: 'Mot de passe incorrect' });
 
 
-       res.status(200).json({message:"Connexion Réussi"})
+       res.status(200).json({ success: true, message:"Successfully connexion"})
     } catch (error) {
         res.status (500). json({ message: error.message });
     }

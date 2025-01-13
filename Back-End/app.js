@@ -3,6 +3,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const authRoutes = require('./routes/UserRoutes');
+const pizzaRoute = require('./routes/PizzaRoutes')
 
 dotenv.config();
 connectDB();
@@ -15,8 +16,11 @@ app.use(cors({
   }));//Pour autoriser les requetes cross-origin
 app.use(express.json()); //Pour analyser les requetes JSON
 
+
 //Routes
 app.use('/api/user', authRoutes);
+app.use('/api/pizza', pizzaRoute)
+
 
 //Démarrer le serveur
 const PORT = process.env.PORT || 5000;
